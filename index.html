@@ -3,89 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Matt!</title>
+  <title>Google Parody Search</title>
   <style>
     body {
-      background-color: #FFFFCC; /* Light yellow background */
       font-family: Arial, sans-serif;
-      text-align: center;
+      background-color: #f2f2f2;
       margin: 0;
       padding: 0;
     }
-    h1 {
-      font-size: 36px;
-      color: #FF00FF; /* Magenta */
-      text-shadow: 2px 2px #000000; /* Black shadow */
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
     }
-    p {
-      font-size: 24px;
-      color: #0000FF; /* Blue */
+    .search-bar {
+      display: flex;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      overflow: hidden;
     }
-    /* Style for the comment section */
-    .comment-section {
-      margin-top: 20px;
-      padding-top: 20px;
-      text-align: left;
-      width: 60%;
-      margin: auto;
-    }
-    .comment {
-      margin-bottom: 20px;
+    .search-input {
+      flex: 1;
+      border: none;
       padding: 10px;
-      background-color: #FFFFCC; /* Light yellow background */
-      border: 2px solid #000; /* Black border */
+      font-size: 16px;
+      outline: none;
     }
-    .comment .author {
-      font-weight: bold;
-      color: #FF00FF; /* Magenta */
+    .search-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
     }
-    .comment .date {
-      font-style: italic;
-      color: #0000FF; /* Blue */
+    .search-button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday Matt! I WANT TO BELIEVE... in the message of this webpage. </h1>
-  <img src="17-56-09-475_512.webp" alt="Balloons" width="200">
-  <p> We should all have what you have, as a Superpower! Also, you have to make the best use of the time you live in. We have no choice when we're born. I'm actually crying as I write this. matt never walks, he always runs, 
-like a bullet from a gun,
-you can see his stripes streaking past
-and i bet one day he'll run all the way
-around the world, 
-like a zebra, steadfast towards the sun
-i hope we're all there to see it</p>
-  <p> BORN TO PONDER</p>
-  <img src="matt.jpg" alt="Matt" width="400">
-  
-  <!-- Comment section -->
-  <div class="comment-section">
-    <h2>Comments</h2>
-    <div class="comment">
-      <p class="author">Will Terry</p>
-      <p class="date">February 23, 2024</p>
-      <p>this is a great webpage!</p>
-    </div>
-    <div class="comment">
-      <p class="author">Fiona Begley</p>
-      <p class="date">February 24, 2024</p>
-      <p>happy birthday, Matt! I check my website all the time!</p>
-    </div>
-    <div class="comment">
-      <p class="author">Elena (aka Eleanor) Hanke</p>
-      <p class="date">February 24, 2024</p>
-      <p>hbd Matt</p>
-    </div>
-        <div class="comment">
-      <p class="author">Ed Hodge</p>
-      <p class="date">February 24, 2024</p>
-      <p>For your birthday I will fix the mower</p>
-    </div>
-     <div class="comment">
-      <p class="author">Anna and Quinn</p>
-      <p class="date">February 23, 2024</p>
-      <p>year after year we get a bit more info on you, and one day, we will be able to model the perfect replica for scietists reasons</p>
-    </div>
+  <div class="container">
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png" alt="Google Logo" style="display: block; margin: 0 auto 20px;">
+    <form action="https://your-github-username.github.io/your-repo-name/index2.html" method="GET">
+      <div class="search-bar">
+        <input class="search-input" type="text" name="q" placeholder="Search Google...">
+        <button class="search-button" type="submit">Search</button>
+      </div>
+    </form>
   </div>
 </body>
 </html>
