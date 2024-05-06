@@ -3,12 +3,19 @@
 <head>
 <title>Chat with AI</title>
 <style>
+body {
+  font-family: ‘Arial’, sans-serif;
+  background-color: #CEE3F8;
+}
+
 .chat-container {
   height: 400px;
   width: 300px;
-  border: 1px solid #ccc;
+  border: 1px solid #005AAF;
+  border-radius: 10px;
   margin: 0 auto;
   padding: 10px;
+  background-color: white;
   overflow-y: scroll;
 }
 
@@ -17,20 +24,38 @@
 }
 
 .user-message {
-  background-color: #f2f2f2;
+  background-color: #DDEBF7;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .ai-message {
-  background-color: #4CAF50;
+  background-color: #94C756;
   color: white;
   padding: 10px;
+  border-radius: 10px;
+}
+
+input[type=“text”] {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #005AAF;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #005AAF;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 </style>
 </head>
 <body>
 <div class=“chat-container”>
-  <div class=“chat-message ai-message”>Hello! How can I help you today?</div>
+  <div class=“chat-message ai-message”>AIM Chat</div>
 </div>
 <input type=“text” id=“message-input” placeholder=“Type a message…”>
 <button onclick=“sendMessage()”>Send</button>
