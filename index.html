@@ -1,62 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Parody Search</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-    }
-    .search-bar {
-      display: flex;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .search-input {
-      flex: 1;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      outline: none;
-    }
-    .search-button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-    .search-button:hover {
-      background-color: #45a049;
-    }
-  </style>
+<title>Chat with AI</title>
+<style>
+.chat-container {
+  height: 400px;
+  width: 300px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+}
+
+.user-message {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.ai-message {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1 style="text-align: center; font-family: 'Arial', sans-serif; font-size: 50px; margin-bottom: 20px;">
-      <span style="color: #4285F4;">E</span>
-      <span style="color: #DB4437;">M</span>
-      <span style="color: #F4B400;">I</span>
-    </h1>
-    <form action="https://floydy10.github.io/Emski/search_results.html" method="GET">
-      <div class="search-bar">
-        <input class="search-input" type="text" name="q" placeholder="Search EMI...">
-        <button class="search-button" type="submit">Search</button>
-      </div>
-    </form>
-  </div>
+<div class=“chat-container”>
+  <div class=“chat-message ai-message”>Hello! How can I help you today?</div>
+</div>
+<input type=“text” id=“message-input” placeholder=“Type a message…”>
+<button onclick=“sendMessage()”>Send</button>
+
+<script>
+function sendMessage() {
+  var message = document.getElementById(“message-input”).value;
+  
+  var chatContainer = document.querySelector(“.chat-container”);
+  
+  var userMessage = document.createElement(“div”);
+  userMessage.innerText = message;
+  userMessage.className = “chat-message user-message”;
+  chatContainer.appendChild(userMessage);
+  
+  document.getElementById(“message-input”).value = “”;
+  
+  setTimeout(function() {
+    var aiMessage = document.createElement(“div”);
+    aiMessage.innerText = “I’m sorry, I cannot understand that. Please try again.”;
+    aiMessage.className = “chat-message ai-message”;
+    chatContainer.appendChild(aiMessage);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }, 1000);
+}
+</script>
 </body>
 </html>
