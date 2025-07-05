@@ -30,7 +30,7 @@
         flex: 1 1 auto;
         overflow-y: auto;
         display: flex;
-        flex-direction: column;      /* ← normal flow, newest pushes older down   */
+        flex-direction: column;   /* newest pushes older down */
         align-items: center;
         padding: 0.5rem;
     }
@@ -99,10 +99,24 @@ const form     = document.getElementById('composer');
 const textarea = document.getElementById('text');
 const sendBtn  = document.getElementById('send');
 
+let postCount = 0;  // keeps track of how many posts exist
+
+// number any starter posts (oldest = #1, next = #2, …)
+function numberExistingPosts() {
+    const posts = Array.from(feed.children).reverse(); // bottom-to-top
+    posts.forEach((p, idx) => {
+        p.textContent = `${idx + 1}. ${p.textContent}`;
+    });
+    postCount = posts.length;
+}
+document.addEventListener('DOMContentLoaded', numberExistingPosts);
+
+// enable/disable button
 textarea.addEventListener('input', () => {
     sendBtn.disabled = textarea.value.trim().length === 0;
 });
 
+// submit handler
 form.addEventListener('submit', e => {
     e.preventDefault();
     const text = textarea.value.trim();
@@ -110,11 +124,9 @@ form.addEventListener('submit', e => {
 
     const post = document.createElement('div');
     post.className = 'post';
-    post.textContent = text;
+    post.textContent = `${++postCount}. ${text}`; // prepend number
 
-    // newest at top, older pushed down
-    feed.prepend(post);
-
+    feed.prepend(post);            // newest goes on top
     textarea.value = '';
     sendBtn.disabled = true;
     textarea.focus();
