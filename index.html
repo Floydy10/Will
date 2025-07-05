@@ -10,6 +10,7 @@
         --bg: #f0f2f5;
         --card: #ffffff;
         --accent: #1da1f2;
+        --post-width: 600px;   /* tweak this to taste */
     }
     body {
         margin: 0;
@@ -29,8 +30,9 @@
         flex: 1 1 auto;
         overflow-y: auto;
         display: flex;
-        flex-direction: column-reverse;           /* newest at top */
+        flex-direction: column-reverse;
         padding: 0.5rem;
+        **align-items: center;           /* NEW – keep children centred */**
     }
     .post {
         background: var(--card);
@@ -40,6 +42,8 @@
         margin-bottom: 0.7rem;
         line-height: 1.4;
         word-wrap: break-word;
+        **max-width: var(--post-width);  /* NEW – cap width & centre */**
+        width: 100%;
     }
     form {
         display: flex;
@@ -79,14 +83,11 @@
 
 <header>Mini-Tweet Feed</header>
 
-<!-- scrolling timeline -->
 <main id="feed">
-    <!-- starter posts -->
     <div class="post">🚀 Hello, world! Your timeline is live.</div>
     <div class="post">🌳 Watch the trees grow in your next project.</div>
 </main>
 
-<!-- composer -->
 <form id="composer">
     <textarea id="text" placeholder="What's happening?" maxlength="280" required></textarea>
     <button type="submit" id="send" disabled>Post</button>
@@ -98,28 +99,22 @@ const form     = document.getElementById('composer');
 const textarea = document.getElementById('text');
 const sendBtn  = document.getElementById('send');
 
-// enable/disable button as user types
 textarea.addEventListener('input', () => {
     sendBtn.disabled = textarea.value.trim().length === 0;
 });
 
-// post handler
 form.addEventListener('submit', e => {
     e.preventDefault();
     const text = textarea.value.trim();
     if (!text) return;
 
-    // create new post element
     const post = document.createElement('div');
     post.className = 'post';
     post.textContent = text;
 
-    // add to feed (top)
     feed.prepend(post);
     textarea.value = '';
     sendBtn.disabled = true;
-
-    // optional: keep focus for faster posting
     textarea.focus();
 });
 </script>
