@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>wall-txt</title>
+<title>Mini-Tweet Feed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     :root {
@@ -44,6 +44,15 @@
         word-wrap: break-word;
         max-width: var(--post-width);
         width: 100%;
+        display: flex;            /* NEW – allow gap between number and text */
+        gap: 0.6rem;              /* space between number and tweet */
+    }
+    .num {
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .content {
+        flex: 1 1 auto;
     }
     form {
         display: flex;
@@ -81,10 +90,10 @@
 </head>
 <body>
 
-<header>wall-txt</header>
+<header>Mini-Tweet Feed</header>
 
 <main id="feed">
-    <div class="post">welcome to wall-txt. email your post to wall-text@gmail.com</div>
+    <div class="post"><span class="num">1.</span><span class="content">wallTxt</span></div>
 </main>
 
 <form id="composer">
@@ -98,17 +107,7 @@ const form     = document.getElementById('composer');
 const textarea = document.getElementById('text');
 const sendBtn  = document.getElementById('send');
 
-let postCount = 0;  // keeps track of how many posts exist
-
-// number any starter posts (oldest = #1, next = #2, …)
-function numberExistingPosts() {
-    const posts = Array.from(feed.children).reverse(); // bottom-to-top
-    posts.forEach((p, idx) => {
-        p.textContent = `${idx + 1}. ${p.textContent}`;
-    });
-    postCount = posts.length;
-}
-document.addEventListener('DOMContentLoaded', numberExistingPosts);
+let postCount = 1;  // one starter post already numbered
 
 // enable/disable button
 textarea.addEventListener('input', () => {
@@ -123,9 +122,18 @@ form.addEventListener('submit', e => {
 
     const post = document.createElement('div');
     post.className = 'post';
-    post.textContent = `${++postCount}. ${text}`; // prepend number
 
+    const numSpan = document.createElement('span');
+    numSpan.className = 'num';
+    numSpan.textContent = `${++postCount}.`;
+
+    const contentSpan = document.createElement('span');
+    contentSpan.className = 'content';
+    contentSpan.textContent = text;
+
+    post.append(numSpan, contentSpan);
     feed.prepend(post);            // newest goes on top
+
     textarea.value = '';
     sendBtn.disabled = true;
     textarea.focus();
