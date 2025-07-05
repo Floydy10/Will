@@ -10,7 +10,7 @@
         --bg: #f0f2f5;
         --card: #ffffff;
         --accent: #1da1f2;
-        --post-width: 600px;   /* tweak this to taste */
+        --post-width: 600px;
     }
     body {
         margin: 0;
@@ -30,9 +30,9 @@
         flex: 1 1 auto;
         overflow-y: auto;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;      /* ← normal flow, newest pushes older down   */
+        align-items: center;
         padding: 0.5rem;
-        **align-items: center;           /* NEW – keep children centred */**
     }
     .post {
         background: var(--card);
@@ -42,7 +42,7 @@
         margin-bottom: 0.7rem;
         line-height: 1.4;
         word-wrap: break-word;
-        **max-width: var(--post-width);  /* NEW – cap width & centre */**
+        max-width: var(--post-width);
         width: 100%;
     }
     form {
@@ -84,8 +84,8 @@
 <header>Mini-Tweet Feed</header>
 
 <main id="feed">
-    <div class="post">🚀 Hello, world! Your timeline is live.</div>
-    <div class="post">🌳 Watch the trees grow in your next project.</div>
+    <div class="post">wallTxt</div>
+    <div class="post">send your post to walltxt@gmail.com</div>
 </main>
 
 <form id="composer">
@@ -112,7 +112,9 @@ form.addEventListener('submit', e => {
     post.className = 'post';
     post.textContent = text;
 
+    // newest at top, older pushed down
     feed.prepend(post);
+
     textarea.value = '';
     sendBtn.disabled = true;
     textarea.focus();
